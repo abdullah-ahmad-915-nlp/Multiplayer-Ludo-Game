@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>Ludo - Game Lobby</title>
+  <link rel="stylesheet" href="styles.css"/>
+  <link rel="stylesheet" href="lobby.css"/>
+</head>
+<body>
+  <div class="page">
+    <div class="lobby-container">
+      <div class="lobby-header">
+        <h1 class="lobby-title">🎲 LUDO</h1>
+        <p class="lobby-subtitle">Classic Board Game Experience</p>
+      </div>
+
+      <div class="lobby-card">
+        <h2>Game Lobby</h2>
+        
+        <div class="players-grid">
+          <!-- Player 1 (Current Player) -->
+          <div class="player-slot filled">
+            <div class="player-slot-label">Player 1</div>
+            <div class="player-slot-name" id="player1-name">You</div>
+            <div class="player-slot-color red"></div>
+          </div>
+
+          <!-- Player 2 -->
+          <div class="player-slot filled">
+            <div class="player-slot-label">Player 2</div>
+            <div class="player-slot-name" id="player2-name">Zain</div>
+            <div class="player-slot-color blue"></div>
+          </div>
+
+          <!-- Player 3 -->
+          <div class="player-slot filled">
+            <div class="player-slot-label">Player 3</div>
+            <div class="player-slot-name" id="player3-name">Talha</div>
+            <div class="player-slot-color green"></div>
+          </div>
+
+          <!-- Player 4 -->
+          <div class="player-slot empty">
+            <div class="player-slot-label">Player 4</div>
+            <div class="player-slot-name">Waiting...</div>
+            <div class="player-slot-color none"></div>
+          </div>
+        </div>
+
+		<!-- Button is supposed to stay disabled until atleast 1 person joins -->
+        <!-- <button class="start-button" id="start-btn" disabled>
+          Start Game (Need 2+ Players)
+        </button> -->
+		<button class="start-button" id="start-btn">
+          Start Game (3/4 Players)
+        </button>
+
+        <div class="lobby-footer">
+          <!-- <p id="player-count">1 player ready</p> -->
+          <button class="back-button">Go Back</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

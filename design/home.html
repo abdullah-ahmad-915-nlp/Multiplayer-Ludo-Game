@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>Ludo - Dashboard</title>
+  <link rel="stylesheet" href="styles.css"/>
+  <link rel="stylesheet" href="home.css"/>
+</head>
+<body>
+  <div class="page">
+    <!-- Navbar -->
+    <nav class="navbar">
+      <div class="navbar-left">
+        <a href="home.html" class="navbar-title">🎲 LUDO</a>
+      </div>
+      <div class="navbar-right">
+        <div class="coin-display">
+          <span class="coin-icon">💰</span>
+          <span class="coin-amount">350 Coins</span>
+        </div>
+        <div class="user-dropdown">
+          <button class="dropdown-btn">Username ▼</button>
+          <div class="dropdown-menu">
+            <a href="update-profile.html" class="dropdown-item">Update Profile</a>
+            <a href="javascript:void(0)" class="dropdown-item logout-btn">Logout</a>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <div class="dashboard-container">
+      <div class="dashboard-header">
+        <h2>Welcome, Player!</h2>
+        <p>Choose an option below to continue</p>
+      </div>
+
+      <div class="dashboard-grid">
+        <!-- Play Card -->
+        <div class="dashboard-card play-card">
+          <div class="card-icon">🎮</div>
+          <h3>Play Game</h3>
+          <p>Join a lobby and play with other players</p>
+          <a href="lobby.html" class="card-button">Start Playing</a>
+        </div>
+
+        <!-- Leaderboard Card -->
+        <div class="dashboard-card leaderboard-card">
+          <div class="card-icon">🏆</div>
+          <h3>Leaderboard</h3>
+          <p>Check global rankings and player stats</p>
+          <a href="leaderboard.html" class="card-button">View Rankings</a>
+        </div>
+
+        <!-- History Card -->
+        <div class="dashboard-card history-card">
+          <div class="card-icon">📊</div>
+          <h3>Game History</h3>
+          <p>Review your past matches and results</p>
+          <a href="history.html" class="card-button">View History</a>
+        </div>
+      </div>
+
+      <div class="stats-section">
+        <h3>Your Stats</h3>
+        <div class="stats-grid">
+          <div class="stat-item">
+            <span class="stat-label">Total Games</span>
+            <span class="stat-value">24</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-label">Wins</span>
+            <span class="stat-value">8</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-label">Win Rate</span>
+            <span class="stat-value">33%</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-label">Total Coins</span>
+            <span class="stat-value">350</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

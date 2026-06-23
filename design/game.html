@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Ludo – Gameplay</title>
+<link rel="stylesheet" href="styles.css"/>
+<link rel="stylesheet" href="game.css"/>
+</head>
+<body>
+<div class="page">
+
+<!-- TOP BAR -->
+<div class="topbar">
+  <div class="topbar-info">
+    <div><span>Room: </span><strong>#LUDO-4821</strong></div>
+    <div><span>Mode: </span><strong>Classic (4 players)</strong></div>
+  </div>
+  <div class="timer">00:23</div>
+  <div class="flex-row gap-8px">
+    <button class="btn btn-muted">&#9654; Spectate</button>
+    <button class="btn btn-danger">&#x2715; Leave Game</button>
+  </div>
+</div>
+
+<div class="layout">
+
+<!-- ══ LEFT SIDEBAR ══ -->
+<aside>
+  <div class="panel">
+    <div class="panel-hd">Your Turn - Roll Dice</div>
+    <div class="panel-bd">
+      <div class="die-number">6</div>
+      <button class="roll-btn">Roll!</button>
+      <div class="roll-hist">Recent: <span class="rp">4</span><span class="rp">6</span><span class="rp">2</span><span class="rp">6</span><span class="rp">1</span></div>
+    </div>
+  </div>
+
+  <div class="panel">
+    <div class="panel-hd">Players</div>
+    <div class="panel-bd">
+      <div class="player-card active">
+        <span class="active-badge">Your Turn</span>
+        <div class="p-name"><div class="p-dot dot-red"></div>You (Red)</div>
+        <div class="p-stats">On board: 1 &nbsp;|&nbsp; Home: 2 &nbsp;|&nbsp; Fin: 1</div>
+        <!-- <div class="pip-row">
+          <div class="pip fin" title="R1 – Finished"></div>
+          <div class="pip on"  title="R2 – Start sq."></div>
+          <div class="pip home" title="R3 – Home"></div>
+          <div class="pip home" title="R4 – Home"></div>
+        </div> -->
+        <div class="prog-wrap"><div class="prog-fill w-40pct bg-red"></div></div>
+      </div>
+      <div class="player-card">
+        <div class="p-name"><div class="p-dot dot-blue"></div>Ali (Blue)</div>
+        <div class="p-stats">On board: 1 &nbsp;|&nbsp; Home: 2 &nbsp;|&nbsp; Fin: 1</div>
+        <!-- <div class="pip-row">
+          <div class="pip fin"></div><div class="pip on"></div>
+          <div class="pip home"></div><div class="pip home"></div>
+        </div> -->
+        <div class="prog-wrap"><div class="prog-fill w-40pct bg-blue"></div></div>
+      </div>
+      <div class="player-card">
+        <div class="p-name"><div class="p-dot dot-green"></div>Sara (Green)</div>
+        <div class="p-stats">On board: 1 &nbsp;|&nbsp; Home: 2 &nbsp;|&nbsp; Fin: 1</div>
+        <!-- <div class="pip-row">
+          <div class="pip fin"></div><div class="pip on"></div>
+          <div class="pip home"></div><div class="pip home"></div>
+        </div> -->
+        <div class="prog-wrap"><div class="prog-fill w-40pct bg-green"></div></div>
+      </div>
+      <div class="player-card">
+        <div class="p-name"><div class="p-dot dot-yellow"></div>Zaid (Yellow)</div>
+        <div class="p-stats">On board: 1 &nbsp;|&nbsp; Home: 2 &nbsp;|&nbsp; Fin: 1</div>
+        <!-- <div class="pip-row">
+          <div class="pip fin"></div><div class="pip on"></div>
+          <div class="pip home"></div><div class="pip home"></div>
+        </div> -->
+        <div class="prog-wrap"><div class="prog-fill w-40pct bg-yellow"></div></div>
+      </div>
+    </div>
+  </div>
+</aside>
+
+<!-- ══ BOARD AREA ══ -->
+<div class="board-area">
+  <!-- <div class="status-bar">
+    <div class="status-msg">
+      <div class="turn-swatch turning-swatch-red"></div>
+      <strong>Red's turn</strong>
+      <span class="opacity-70 text-sm">– Rolled a 6! Select a token to move.</span>
+    </div>
+    <span class="text-sm opacity-70">Turn 7</span>
+  </div> -->
+
+    <div class="ludo-board">
+
+    <!-- ══ ROW 1: Red Home | Top Track | Blue Home ══ -->
+    <div class="board-row board-row--top">
+
+      <!-- Red Home (6×6) -->
+      <div class="home home--red">
+        <div class="yard">
+          <!-- Slot 1: R3 token (home) -->
+          <div class="token-slot">
+            <div class="token token--red">R3<span class="token-tip">R3 – Home base</span></div>
+          </div>
+          <!-- Slot 2: R4 token (home) -->
+          <div class="token-slot">
+            <div class="token token--red">R4<span class="token-tip">R4 – Home base</span></div>
+          </div>
+          <!-- Slot 3: empty -->
+          <div class="token-slot"></div>
+          <!-- Slot 4: empty -->
+          <div class="token-slot"></div>
+        </div>
+      </div>
+
+      <!-- Top Track: 3 cols × 6 rows
+           Col layout (left→right): col A | col B (blue home col) | col C
+           Row layout (top→bottom): row 1..6, row 6 is adjacent to middle band
+
+           Track squares in this section (clockwise from Red's perspective):
+             Col C rows 6→1 = track squares 3→8  (Red going up the right side of top track)
+             Col B row 1    = track sq 9  (safe)
+             Col A rows 1→6 = track sq 10→15 (going down left side of top)
+             … but col B (rows 1-5) = Blue home column (coloured, not normal track)
+             Row 6, col A   = Blue start square
+
+           Simpler static layout for 3×6:
+             Positions [row][col] 1-indexed:
+               [1][1] = normal track
+               [1][2] = blue home col
+               [1][3] = normal track (safe: ★)
+               [2][1..3] = normal / blue-home / normal
+               ...
+               [5][1] = BLUE START (entry sq for blue)
+               [5][2] = blue home col
+               [5][3] = normal
+               [6][1..3] = normal track (connects to left/right arms)
+      -->
+      <div class="track-col track-col--top">
+        <!-- Row 1 -->
+        <div class="sq"></div>
+        <div class="sq"></div>
+        <div class="sq"></div>  <!-- safe sq -->
+        <!-- Row 2 -->
+        <div class="sq"></div>
+        <div class="sq sq--home-blue"></div>
+        <div class="sq sq--safe sq--start-blue">
+          <!-- <div class="sq sq--start-blue"></div> -->
+          <div class="token token--blue">B2<span class="token-tip">B2 – Start square</span></div>
+		</div>
+        <!-- Row 3 -->
+		<div class="sq sq--safe"></div>
+        <div class="sq sq--home-blue"></div>
+        <div class="sq"></div>
+        <!-- Row 4 -->
+        <div class="sq"></div>
+        <div class="sq sq--home-blue"></div>
+        <div class="sq"></div>
+        <!-- Row 5 — Blue start square in col A; B1 token is here -->
+        <div class="sq"></div>
+        <div class="sq sq--home-blue"></div>
+        <div class="sq"></div>
+        <!-- Row 6 — B1 finished token is in home col row 5 above;
+             row 6 col B = last home col cell closest to centre (finished token) -->
+        <div class="sq"></div>
+        <div class="sq sq--home-blue">
+          <div class="token token--blue">B1<span class="token-tip">B1 – Finished</span></div>
+        </div>
+        <div class="sq"></div>
+      </div>
+
+      <!-- Blue Home (6×6) -->
+      <div class="home home--blue">
+        <div class="yard">
+          <div class="token-slot">
+            <div class="token token--blue">B3<span class="token-tip">B3 – Home base</span></div>
+          </div>
+          <div class="token-slot">
+            <div class="token token--blue">B4<span class="token-tip">B4 – Home base</span></div>
+          </div>
+          <div class="token-slot"></div>
+          <div class="token-slot"></div>
+        </div>
+      </div>
+
+    </div><!-- /.board-row--top -->
+
+    <!-- ══ ROW 2: Left Track | Centre | Right Track ══ -->
+    <div class="board-row board-row--mid">
+
+      <!-- Left Track: 6 cols × 3 rows
+           Row layout (top→bottom): row A | row B (red home col) | row C
+           Col layout (left→right): col 1..6, col 6 is adjacent to centre
+
+           Red start square is in col 1, row C (bottom-left of this section).
+           Red home column runs across row B (cols 1-5; col 6 is adj to centre = finished pos).
+
+           [rowA][col1..6] = normal track
+           [rowB][col1..5] = red home col; [rowB][col6] = adj centre (red finished token here)
+           [rowC][col1]    = RED START sq
+           [rowC][col2..6] = normal track
+      -->
+      <div class="track-col track-col--left">
+        <!-- Row A (top) -->
+        <div class="sq"></div>  <!-- safe sq -->
+        <div class="sq sq--start-red">
+          <div class="token token--red">R2<span class="token-tip">R2 – Start square</span></div>
+		</div>
+        <div class="sq"></div>
+        <div class="sq"></div>
+        <div class="sq"></div>
+        <div class="sq"></div>
+        <!-- Row B (middle) = Red home column -->
+        <div class="sq"></div>
+        <div class="sq sq--home-red"></div>
+        <div class="sq sq--home-red"></div>
+        <div class="sq sq--home-red"></div>
+        <div class="sq sq--home-red"></div>
+        <!-- Col 6 of row B = last red home col cell (finished token) -->
+        <div class="sq sq--home-red">
+          <div class="token token--red">R1<span class="token-tip">R1 – Finished</span></div>
+        </div>
+        <!-- Row C (bottom) -->
+        <!-- Col 1 = Red start square; R2 token is here -->
+        <div class="sq"></div>
+        <div class="sq"></div>
+        <div class="sq sq--safe"></div>
+        <div class="sq"></div>
+        <div class="sq"></div>
+        <div class="sq"></div>
+      </div>
+
+      <!-- Centre (3×3) — 4 triangles meeting at a point -->
+      <div class="centre">
+        <div class="tri tri--top"></div>
+        <div class="tri tri--right"></div>
+        <div class="tri tri--bot"></div>
+        <div class="tri tri--left"></div>
+        <span class="centre-star">★</span>
+      </div>
+
+      <!-- Right Track: 6 cols × 3 rows
+           Row layout (top→bottom): row A | row B (yellow home col) | row C
+           Col layout (left→right): col 1 (adj centre) .. col 6 (rightmost)
+
+           Yellow start square is col 6, row A (top-right of this section).
+           Yellow home column runs across row B (cols 2-6; col 1 adj centre = finished pos).
+
+           [rowA][col6]    = YELLOW START sq; Y2 token
+           [rowB][col1]    = adj centre (yellow finished token Y1)
+           [rowB][col2..6] = yellow home col
+           [rowC][col1..6] = normal track
+      -->
+      <div class="track-col track-col--right">
+        <!-- Row A -->
+        <div class="sq"></div>
+        <div class="sq"></div>
+        <div class="sq"></div>
+        <div class="sq sq--safe"></div>
+        <div class="sq"></div>
+        <!-- Col 6 = Yellow start square; Y2 token -->
+        <div class="sq"></div>
+        <!-- Row B = Yellow home column -->
+        <!-- Col 1 of row B = last yellow home col cell closest to centre (finished token) -->
+        <div class="sq sq--home-yellow">
+          <div class="token token--yel">Y1<span class="token-tip">Y1 – Finished</span></div>
+        </div>
+        <div class="sq sq--home-yellow"></div>
+        <div class="sq sq--home-yellow"></div>
+        <div class="sq sq--home-yellow"></div>
+        <div class="sq sq--home-yellow"></div>
+        <div class="sq"></div>
+        <!-- Row C -->
+        <div class="sq"></div>
+        <div class="sq"></div>
+        <div class="sq"></div>
+        <div class="sq"></div>
+        <div class="sq sq--start-yellow">
+          <div class="token token--yel">Y2<span class="token-tip">Y2 – Start square</span></div>
+		</div>  <!-- safe sq -->
+        <div class="sq"></div>
+      </div>
+
+    </div><!-- /.board-row--mid -->
+
+    <!-- ══ ROW 3: Green Home | Bottom Track | Yellow Home ══ -->
+    <div class="board-row board-row--bot">
+
+      <!-- Green Home (6×6) -->
+      <div class="home home--green">
+        <div class="yard">
+          <div class="token-slot">
+            <div class="token token--green">G3<span class="token-tip">G3 – Home base</span></div>
+          </div>
+          <div class="token-slot">
+            <div class="token token--green">G4<span class="token-tip">G4 – Home base</span></div>
+          </div>
+          <div class="token-slot"></div>
+          <div class="token-slot"></div>
+        </div>
+      </div>
+
+      <!-- Bottom Track: 3 cols × 6 rows
+           Col layout (left→right): col A | col B (green home col) | col C
+           Row layout (top→bottom): row 1 (adj middle band) → row 6 (bottommost)
+
+           Green start square: col C, row 1 (top-right of bottom track).
+           Green home column: col B rows 1-5; row 1 col B = adj centre (finished pos).
+
+           [row1][colA]    = normal
+           [row1][colB]    = green home col adj centre → G1 finished token
+           [row1][colC]    = GREEN START sq; G2 token
+           [row2..6][colB] = green home col
+           [row6][colA]    = safe sq
+      -->
+      <div class="track-col track-col--bot">
+        <!-- Row 1 -->
+        <div class="sq"></div>
+        <!-- Col B row 1 = last green home col cell (finished token) -->
+        <div class="sq sq--home-green">
+          <div class="token token--green">G1<span class="token-tip">G1 – Finished</span></div>
+        </div>
+        <div class="sq"></div>
+        <!-- Row 2 -->
+        <div class="sq"></div>
+        <div class="sq sq--home-green"></div>
+        <div class="sq"></div>
+        <!-- Row 3 -->
+        <div class="sq"></div>
+        <div class="sq sq--home-green"></div>
+        <div class="sq"></div>
+        <!-- Row 4 -->
+        <div class="sq"></div>
+        <div class="sq sq--home-green"></div>
+        <div class="sq sq--safe"></div>
+        <!-- Row 5 -->
+        <div class="sq sq--start-green">
+          <div class="token token--green">G2<span class="token-tip">G2 – Start square</span></div>
+        </div>
+        <div class="sq sq--home-green"></div>
+        <div class="sq"></div>
+        <!-- Row 6 -->
+        <div class="sq"></div>
+        <div class="sq"></div>
+        <div class="sq"></div>
+      </div>
+
+      <!-- Yellow Home (6×6) -->
+      <div class="home home--yellow">
+        <div class="yard">
+          <div class="token-slot">
+            <div class="token token--yel">Y3<span class="token-tip">Y3 – Home base</span></div>
+          </div>
+          <div class="token-slot">
+            <div class="token token--yel">Y4<span class="token-tip">Y4 – Home base</span></div>
+          </div>
+          <div class="token-slot"></div>
+          <div class="token-slot"></div>
+        </div>
+      </div>
+
+    </div><!-- /.board-row--bot -->
+
+  </div><!-- /.ludo-board -->
+
+  <!-- <div class="move-options">
+    <div class="mo-label">Select a token to move (rolled 6):</div>
+    <div class="tok-btns">
+      <button class="tok-btn"><div class="dot-red-sm"></div>R2 – Start sq.</button>
+      <button class="tok-btn"><div class="dot-red-sm"></div>R3 – Enter board</button>
+      <button class="tok-btn"><div class="dot-red-sm"></div>R4 – Enter board</button>
+      <button class="tok-btn disabled"><div class="dot-gray-sm"></div>R1 – Finished</button>
+    </div>
+  </div> -->
+</div>
+
+<!-- ══ RIGHT SIDEBAR ══ -->
+<aside>
+  <div class="panel">
+    <div class="panel-hd">Live Chat</div>
+    <div class="chat-window">
+      <div class="chat-messages">
+        <div class="chat-msg sys"><div class="msg-bubble">Game started – Good luck everyone!</div></div>
+        <div class="chat-msg">
+          <div class="msg-meta"><span class="msg-sender msg-sender-blue">Ali</span><span class="msg-time">14:02</span></div>
+          <div class="msg-bubble">nice roll lol</div>
+        </div>
+        <div class="chat-msg mine">
+          <div class="msg-meta flex-end-justify"><span class="msg-time">14:03</span><span class="msg-sender msg-sender-red">You</span></div>
+          <div class="msg-bubble">finally a 6!</div>
+        </div>
+        <div class="chat-msg">
+          <div class="msg-meta"><span class="msg-sender msg-sender-green">Sara</span><span class="msg-time">14:03</span></div>
+          <div class="msg-bubble">watch out for my tokens 😈</div>
+        </div>
+        <div class="chat-msg sys"><div class="msg-bubble">Sara's G2 captured Red R2 — sent home!</div></div>
+        <div class="chat-msg">
+          <div class="msg-meta"><span class="msg-sender msg-sender-blue">Ali</span><span class="msg-time">14:04</span></div>
+          <div class="msg-bubble">oof that hurts</div>
+        </div>
+        <div class="chat-msg mine">
+          <div class="msg-meta flex-end-justify"><span class="msg-time">14:04</span><span class="msg-sender msg-sender-red">You</span></div>
+          <div class="msg-bubble">revenge time 😤</div>
+        </div>
+        <div class="chat-msg">
+          <div class="msg-meta"><span class="msg-sender msg-sender-green">Sara</span><span class="msg-time">14:05</span></div>
+          <div class="msg-bubble">good luck catching me lol</div>
+        </div>
+      </div>
+      <div class="quick-react">
+        <button class="qr-btn">👏</button><button class="qr-btn">😂</button>
+        <button class="qr-btn">😱</button><button class="qr-btn">👍</button>
+        <button class="qr-btn">😬</button><button class="qr-btn">🎉</button>
+      </div>
+      <div class="chat-input-row">
+        <input type="text" placeholder="Type a message…"/>
+        <button>Send</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="panel">
+    <div class="panel-hd">Game Log</div>
+    <div class="game-log">
+      <div class="log-entry"><span class="log-time">14:01</span><div class="log-dot log-dot-red"></div><span class="log-text">Red rolled 6 — R2 entered board.</span></div>
+      <div class="log-entry"><span class="log-time">14:01</span><div class="log-dot log-dot-blue"></div><span class="log-text">Blue rolled 6 — B2 entered board.</span></div>
+      <div class="log-entry capture"><span class="log-time">14:02</span><div class="log-dot log-dot-green"></div><span class="log-text">Green G2 captured Blue B2 — home!</span></div>
+      <div class="log-entry"><span class="log-time">14:02</span><div class="log-dot log-dot-yellow"></div><span class="log-text">Yellow rolled 6 — Y2 entered board.</span></div>
+      <div class="log-entry finish"><span class="log-time">14:03</span><div class="log-dot log-dot-red"></div><span class="log-text">Red R1 reached the finish! ★</span></div>
+      <div class="log-entry finish"><span class="log-time">14:03</span><div class="log-dot log-dot-blue"></div><span class="log-text">Blue B1 reached the finish! ★</span></div>
+      <div class="log-entry"><span class="log-time">14:04</span><div class="log-dot log-dot-red"></div><span class="log-text">Red rolled 6 — extra turn!</span></div>
+    </div>
+  </div>
+
+  <div class="panel">
+    <div class="panel-hd">Scores &amp; Stats</div>
+    <div class="panel-bd">
+      <div class="score-grid">
+        <div class="score-cell"><div class="sc-label">Tokens Finished</div><div class="sc-value sc-value-green">4</div></div>
+        <div class="score-cell"><div class="sc-label">Captures</div><div class="sc-value" style="color:#c62828;">2</div></div>
+        <div class="score-cell"><div class="sc-label">Turns Taken</div><div class="sc-value">12</div></div>
+        <div class="score-cell"><div class="sc-label">6s Rolled</div><div class="sc-value sc-value-blue">5</div></div>
+      </div>
+      <div class="standings-wrap">
+        <div class="standings-title">Standings</div>
+        <div class="standing-row"><span class="s-rank">1.</span><div class="p-dot dot-red"></div><span class="flex-1">You (Red)</span><strong class="standing-strong-red">1 fin</strong></div>
+        <div class="standing-row"><span class="s-rank">1.</span><div class="p-dot dot-blue"></div><span class="flex-1">Ali (Blue)</span><strong class="standing-strong-blue">1 fin</strong></div>
+        <div class="standing-row"><span class="s-rank">1.</span><div class="p-dot dot-green"></div><span class="flex-1">Sara (Green)</span><strong class="standing-strong-green">1 fin</strong></div>
+        <div class="standing-row"><span class="s-rank">1.</span><div class="p-dot dot-yellow"></div><span class="flex-1">Zaid (Yellow)</span><strong class="standing-strong-yellow">1 fin</strong></div>
+      </div>
+    </div>
+  </div>
+</aside>
+
+</div><!-- /.layout -->
+</div><!-- /.page -->
+
+<!-- Victory overlay -->
+<div class="victory-overlay" id="victory-overlay">
+  <div class="victory-card">
+    <div class="vc-trophy">🏆</div>
+    <h2>Victory!</h2>
+    <div class="vc-winner color-red">You (Red) Win!</div>
+    <div class="vc-stats">All 4 tokens finished<br>2 captures · 18 turns<br>Duration: 12:44</div>
+    <div class="vc-actions">
+      <button class="btn btn-success">Play Again</button>
+      <button class="btn btn-muted">Main Menu</button>
+      <button class="btn btn-primary">View Stats</button>
+    </div>
+  </div>
+</div>
+
+
+</body>
+</html>
+</body>
+</html>

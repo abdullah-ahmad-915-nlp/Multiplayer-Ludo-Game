@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>Ludo - Update Profile</title>
+  <link rel="stylesheet" href="styles.css"/>
+  <link rel="stylesheet" href="update-profile.css"/>
+</head>
+<body>
+  <div class="page">
+    <!-- Navbar -->
+    <nav class="navbar">
+      <div class="navbar-left">
+        <a href="home.html" class="navbar-title">🎲 LUDO</a>
+      </div>
+      <div class="navbar-right">
+        <div class="coin-display">
+          <span class="coin-icon">💰</span>
+          <span class="coin-amount">350 Coins</span>
+        </div>
+        <div class="user-dropdown">
+          <button class="dropdown-btn">Username ▼</button>
+          <div class="dropdown-menu">
+            <a href="home.html" class="dropdown-item">Home</a>
+            <a href="javascript:void(0)" class="dropdown-item logout-btn">Logout</a>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <div class="profile-container">
+      <div class="profile-header">
+        <h2>Update Profile</h2>
+        <p>Edit your account information</p>
+      </div>
+
+      <div class="profile-card">
+        <form id="update-profile-form">
+          <div class="form-group">
+            <label class="form-label" for="username">Username</label>
+            <input 
+              type="text" 
+              id="username" 
+              class="form-input"
+              placeholder="Your username"
+              value="PlayerName"
+              required
+              minlength="2"
+              maxlength="20"
+            />
+            <span class="form-hint">Cannot be changed after account creation</span>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="dob">Date of Birth</label>
+            <input 
+              type="date" 
+              id="dob" 
+              class="form-input"
+              value="2000-05-15"
+              required
+            />
+          </div>
+
+          <div class="form-divider">
+            <span>Change Password (Optional)</span>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="current-password">Current Password</label>
+            <input 
+              type="password" 
+              id="current-password" 
+              class="form-input"
+              placeholder="Enter your current password"
+              minlength="6"
+            />
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="new-password">New Password</label>
+            <input 
+              type="password" 
+              id="new-password" 
+              class="form-input"
+              placeholder="Enter a new password"
+              minlength="6"
+            />
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="confirm-new-password">Confirm New Password</label>
+            <input 
+              type="password" 
+              id="confirm-new-password" 
+              class="form-input"
+              placeholder="Re-enter your new password"
+              minlength="6"
+            />
+          </div>
+
+          <div class="form-actions">
+            <button type="submit" class="btn-save">Save Changes</button>
+            <a href="home.html" class="btn-cancel">Cancel</a>
+          </div>
+        </form>
+      </div>
+
+      <div class="profile-info">
+        <h3>Account Information</h3>
+        <div class="info-grid">
+          <div class="info-item">
+            <span class="info-label">Member Since</span>
+            <span class="info-value">January 15, 2024</span>
+          </div>
+          <div class="info-item">
+            <span class="info-label">Total Games</span>
+            <span class="info-value">24</span>
+          </div>
+          <div class="info-item">
+            <span class="info-label">Coin Balance</span>
+            <span class="info-value">350 Coins</span>
+          </div>
+          <div class="info-item">
+            <span class="info-label">Win Rate</span>
+            <span class="info-value">33%</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

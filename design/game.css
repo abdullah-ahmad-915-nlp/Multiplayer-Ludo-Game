@@ -1,0 +1,187 @@
+/* ════════════════════════════════════════════════════════════════
+   LUDO – Game Page Styles
+════════════════════════════════════════════════════════════════ */
+
+/* This file contains additional game-specific styles */
+/* Most gameplay styles are in styles.css */
+
+.page {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 12px 18px;
+}
+
+/* Helper utilities */
+.flex-row {
+  display: flex;
+  align-items: center;
+}
+
+.gap-8px {
+  gap: 8px;
+}
+
+.bg-red {
+  background: #e53935;
+}
+
+.bg-blue {
+  background: #1e88e5;
+}
+
+.bg-green {
+  background: #43a047;
+}
+
+.bg-yellow {
+  background: #fdd835;
+}
+
+.w-40pct {
+  width: 40%;
+}
+
+.opacity-70 {
+  opacity: 0.7;
+}
+
+.text-sm {
+  font-size: 12px;
+}
+
+/* Turning swatches */
+.turning-swatch-red {
+  background: #e53935;
+}
+
+.turning-swatch-blue {
+  background: #1e88e5;
+}
+
+.turning-swatch-green {
+  background: #43a047;
+}
+
+.turning-swatch-yellow {
+  background: #fdd835;
+}
+
+/* Status message */
+.status-msg {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Turn indicator */
+.turn-indicator {
+  font-weight: 700;
+}
+
+/* Mobile responsive adjustments */
+@media (max-width: 1024px) {
+  .layout {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+  }
+
+  aside {
+    margin-bottom: 20px;
+  }
+
+  .board-area {
+    order: -1;
+  }
+}
+
+@media (max-width: 768px) {
+  .page {
+    padding: 8px 12px;
+  }
+
+  .topbar {
+    flex-direction: column;
+    padding: 8px 12px;
+    gap: 12px;
+  }
+
+  .topbar-info {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .timer {
+    font-size: 18px;
+    padding: 4px 12px;
+    min-width: 80px;
+  }
+
+  .layout {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .panel {
+    width: 100%;
+  }
+
+  :root {
+    --u: 32px;
+  }
+
+  .btn {
+    padding: 5px 10px;
+    font-size: 12px;
+  }
+
+  .roll-btn {
+    padding: 8px;
+    font-size: 13px;
+  }
+
+  .die-number {
+    width: 48px;
+    height: 48px;
+    font-size: 24px;
+  }
+}
+
+@media (max-width: 480px) {
+  :root {
+    --u: 28px;
+  }
+
+  .topbar {
+    padding: 6px 8px;
+  }
+
+  .topbar-info span,
+  .topbar-info strong {
+    font-size: 11px;
+  }
+
+  .timer {
+    font-size: 16px;
+    padding: 2px 8px;
+    min-width: 70px;
+  }
+
+  .btn {
+    padding: 4px 8px;
+    font-size: 11px;
+  }
+
+  .panel {
+    margin-bottom: 8px;
+  }
+
+  .panel-hd {
+    padding: 5px 8px;
+    font-size: 10px;
+  }
+
+  .panel-bd {
+    padding: 8px 10px;
+  }
+}

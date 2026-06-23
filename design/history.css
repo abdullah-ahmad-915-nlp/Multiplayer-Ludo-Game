@@ -1,0 +1,342 @@
+/* ════════════════════════════════════════════════════════════════
+   LUDO – History Page Styles
+════════════════════════════════════════════════════════════════ */
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #1a3a1c;
+  border: 2px solid #4a7c4e;
+  border-radius: 8px;
+  padding: 14px 20px;
+  margin-bottom: 30px;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.navbar-left {
+  display: flex;
+  align-items: center;
+}
+
+.navbar-title {
+  font-size: 28px;
+  font-weight: 900;
+  color: #f9a825;
+  margin: 0;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.navbar-title:hover {
+  color: #e8920f;
+}
+
+.navbar-right {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.coin-display {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: #2c5f2e;
+  padding: 8px 14px;
+  border-radius: 6px;
+  color: #e8f5e9;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.coin-icon {
+  font-size: 16px;
+}
+
+.user-dropdown {
+  position: relative;
+}
+
+.dropdown-btn {
+  background: #4a7c4e;
+  border: 2px solid #3a6c3e;
+  color: #e8f5e9;
+  padding: 8px 14px;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.dropdown-btn:hover {
+  background: #3a6c3e;
+}
+
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background: #f5f0e8;
+  border: 2px solid #4e342e;
+  border-radius: 6px;
+  margin-top: 8px;
+  min-width: 180px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  z-index: 100;
+}
+
+.user-dropdown:hover .dropdown-menu {
+  display: block;
+}
+
+.dropdown-item {
+  display: block;
+  padding: 12px 16px;
+  color: #4e342e;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 600;
+  transition: all 0.2s ease;
+  border-bottom: 1px solid #e0d5c8;
+}
+
+.dropdown-item:last-child {
+  border-bottom: none;
+}
+
+.dropdown-item:hover {
+  background: #fff8f0;
+  padding-left: 20px;
+  color: #f9a825;
+}
+
+.logout-btn {
+  color: #c62828;
+}
+
+.logout-btn:hover {
+  background: #fff5f5;
+  color: #b71c1c;
+}
+
+.history-container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.history-header {
+  margin-bottom: 30px;
+}
+
+.header-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.history-header h2 {
+  font-size: 32px;
+  color: #ffffff;
+  margin: 0;
+}
+
+.back-link {
+  color: #f9a825;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 16px;
+  transition: color 0.2s ease;
+}
+
+.back-link:hover {
+  color: #e8920f;
+  text-decoration: underline;
+}
+
+.header-subtitle {
+  color: #b1b1b1;
+  font-size: 14px;
+  margin: 0;
+}
+
+.history-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-bottom: 40px;
+}
+
+.history-item {
+  background: linear-gradient(135deg, #f5f0e8 0%, #faf7f2 100%);
+  border: 2px solid #a08060;
+  border-radius: 10px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.history-item:hover {
+  border-color: #f9a825;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+  transform: translateY(-2px);
+}
+
+.game-header {
+  background: #4e342e;
+  color: #ffe0b2;
+  padding: 12px 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.game-id {
+  font-weight: 700;
+  font-size: 14px;
+}
+
+.game-date {
+  font-size: 12px;
+  opacity: 0.9;
+}
+
+.game-details {
+  padding: 16px;
+}
+
+.detail-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+  border-bottom: 1px solid #e0d5c8;
+  font-size: 14px;
+}
+
+.detail-row:last-child {
+  border-bottom: none;
+}
+
+.label {
+  color: #666;
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 12px;
+  letter-spacing: 0.5px;
+}
+
+.value {
+  color: #1a1a1a;
+  font-weight: 600;
+}
+
+.coins {
+  font-weight: 800;
+  font-size: 15px;
+  color: #2e7d32;
+}
+
+.position-1st {
+  color: #f9a825;
+  font-weight: 700;
+}
+
+.position-2nd {
+  color: #a89968;
+  font-weight: 700;
+}
+
+.position-3rd {
+  color: #cd7f32;
+  font-weight: 700;
+}
+
+.position-4th {
+  color: #888;
+  font-weight: 600;
+}
+
+.history-summary {
+  background: #f5f0e8;
+  border: 2px solid #a08060;
+  border-radius: 10px;
+  padding: 30px;
+}
+
+.history-summary h3 {
+  font-size: 20px;
+  color: #4e342e;
+  margin-bottom: 24px;
+}
+
+.summary-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 20px;
+}
+
+.summary-item {
+  background: #fff;
+  border: 2px solid #d4c4b0;
+  border-radius: 8px;
+  padding: 16px;
+  text-align: center;
+}
+
+.summary-label {
+  display: block;
+  font-size: 12px;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 8px;
+  font-weight: 600;
+}
+
+.summary-value {
+  display: block;
+  font-size: 28px;
+  font-weight: 900;
+  color: #f9a825;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+  }
+
+  .navbar-left,
+  .navbar-right {
+    justify-content: center;
+  }
+
+  .header-top {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .game-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .detail-row {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .summary-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}

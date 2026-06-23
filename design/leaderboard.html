@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>Ludo - Leaderboard</title>
+  <link rel="stylesheet" href="styles.css"/>
+  <link rel="stylesheet" href="leaderboard.css"/>
+</head>
+<body>
+  <div class="page">
+    <!-- Navbar -->
+    <nav class="navbar">
+      <div class="navbar-left">
+        <a href="home.html" class="navbar-title">🎲 LUDO</a>
+      </div>
+      <div class="navbar-right">
+        <div class="coin-display">
+          <span class="coin-icon">💰</span>
+          <span class="coin-amount">350 Coins</span>
+        </div>
+        <div class="user-dropdown">
+          <button class="dropdown-btn">Username ▼</button>
+          <div class="dropdown-menu">
+            <a href="update-profile.html" class="dropdown-item">Update Profile</a>
+            <a href="javascript:void(0)" class="dropdown-item logout-btn">Logout</a>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <div class="leaderboard-container">
+      <div class="leaderboard-header">
+        <div class="header-top">
+          <h2>Global Leaderboard</h2>
+          <a href="home.html" class="back-link">← Back to Home</a>
+        </div>
+        
+        <div class="search-section">
+          <input 
+            type="text" 
+            id="search-input" 
+            class="search-input" 
+            placeholder="Search by username..."
+          />
+        </div>
+      </div>
+
+      <div class="leaderboard-wrapper">
+        <table class="leaderboard-table">
+          <thead>
+            <tr>
+              <th class="rank-col">Rank</th>
+              <th class="name-col">Username</th>
+              <th class="games-col">Games Played</th>
+              <th class="coins-col">Coins</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="highlight">
+              <td class="rank">🥇 1st</td>
+              <td class="username">Pro_Player</td>
+              <td class="games">145</td>
+              <td class="coins">4850</td>
+            </tr>
+            <tr>
+              <td class="rank">🥈 2nd</td>
+              <td class="username">Master_Mind</td>
+              <td class="games">132</td>
+              <td class="coins">4200</td>
+            </tr>
+            <tr>
+              <td class="rank">🥉 3rd</td>
+              <td class="username">Elite_Gamer</td>
+              <td class="games">128</td>
+              <td class="coins">4100</td>
+            </tr>
+            <tr>
+              <td class="rank">4th</td>
+              <td class="username">Swift_Fox</td>
+              <td class="games">115</td>
+              <td class="coins">3650</td>
+            </tr>
+            <tr>
+              <td class="rank">5th</td>
+              <td class="username">Shadow_Player</td>
+              <td class="games">108</td>
+              <td class="coins">3420</td>
+            </tr>
+            <tr>
+              <td class="rank">6th</td>
+              <td class="username">Thunder_Strike</td>
+              <td class="games">102</td>
+              <td class="coins">3200</td>
+            </tr>
+            <tr>
+              <td class="rank">7th</td>
+              <td class="username">Nova_Star</td>
+              <td class="games">98</td>
+              <td class="coins">3050</td>
+            </tr>
+            <tr>
+              <td class="rank">8th</td>
+              <td class="username">Cosmic_King</td>
+              <td class="games">95</td>
+              <td class="coins">2900</td>
+            </tr>
+            <tr>
+              <td class="rank">9th</td>
+              <td class="username">Blaze_Runner</td>
+              <td class="games">92</td>
+              <td class="coins">2750</td>
+            </tr>
+            <tr>
+              <td class="rank">10th</td>
+              <td class="username">Zen_Master</td>
+              <td class="games">88</td>
+              <td class="coins">2600</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="pagination">
+        <button class="page-btn prev">← Previous</button>
+        <span class="page-info">Page 1 of 5</span>
+        <button class="page-btn next">Next →</button>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
