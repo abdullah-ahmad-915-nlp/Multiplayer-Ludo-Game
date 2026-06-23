@@ -6,9 +6,9 @@ A real-time, browser-based multiplayer Ludo game built as a full-stack TypeScrip
 
 ## 📋 Table of Contents
 
-- [Overview](#-overview)
-- [Features](#-features)
-- [Tech Stack](#-tech-stack)
+- [Overview](#overview)
+- [Features](#features)
+- [Tech Stack](#tech-stack)
 
 ---
 
